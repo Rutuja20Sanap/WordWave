@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text-changer tool</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playwrite+FR+Moderne:wght@100..400&family=Playwrite+IT+Moderna:wght@100..400&family=Playwrite+NO:wght@100..400&family=Signika:wght@300..700&display=swap');
+
+        body {
+            background-color: rgb(248, 242, 242);
+        }
+
+        .tool-name {
+            text-align: center;
+            margin-bottom: 50px;
+            background-image: radial-gradient(circle 248px at center, #28a5d2 0%, #1ea5c6 47%, #46aef7 100%);
+            margin: 0 550px;
+            border-radius: 5px 20px 5px 20px;
+            padding: 5px;
+            font-size: 40px;
+            color: aliceblue;
+            font-family: cursive;
+        }
+
+        .heading {
+            text-align: center;
+            color: #1CB5E0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-family: cursive;
+        }
+
+        .text-container {
+            display: block;
+            height: 300px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 30px;
+            padding: 10px;
+            color: rgb(3, 90, 124);
+            font-size: larger;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgb(57, 208, 243);
+            border-radius: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .text-container:hover {
+            border: 4px solid rgb(14, 203, 77)
+        }
+
+        p {
+            color: rgb(3, 90, 124);
+            font-size: larger;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .Result-text {
+            text-align: center;
+            font-size: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .btn-container {
+            display: flex;
+            margin-left: 280px;
+            font-family: "Signika", sans-serif;
+        }
+
+        .action-1 {
+            margin-top: 70px;
+            height: 60px;
+            width: 190px;
+            background-color: rgb(3, 90, 124);
+            border: none;
+            color: white;
+            font-size: 25px;
+            border-radius: 5px 20px 5px 20px;
+            margin-right: 70px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+
+        }
+
+        .action-2 {
+            margin-top: 70px;
+            height: 60px;
+            width: 190px;
+            background-color: rgb(3, 90, 124);
+            border: none;
+            color: white;
+            font-size: 25px;
+            border-radius: 5px 20px 5px 20px;
+            margin-right: 70px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .action-3 {
+            margin-top: 70px;
+            height: 60px;
+            width: 190px;
+            background-color: rgb(3, 90, 124);
+            border: none;
+            color: white;
+            font-size: 25px;
+            border-radius: 5px 20px 5px 20px;
+            margin-right: 70px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .action-4 {
+            margin-top: 70px;
+            height: 60px;
+            width: 190px;
+            background-color: rgb(3, 90, 124);
+            border: none;
+            color: white;
+            font-size: 25px;
+            border-radius: 5px 20px 5px 20px;
+            margin-right: 70px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .action-1:hover {
+            background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+        }
+
+        .action-2:hover {
+            background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+        }
+
+        .action-3:hover {
+            background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+        }
+
+        .action-4:hover {
+            background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="tool-name">WordWave</h1>
+    <h2 class="heading">Write Your Text Here <img src="emoji.png" height="25px">!!!
+        <input type="text" class="text-container" id="input-text">
+
+        <p class="Result-text" id="resultText">
+
+        </p>
+
+        <div class="btn-container">
+            <button type="button" class="action-1" onclick="ActionResult('UPPERCASE')">
+                UpperCase
+            </button>
+            <button type="button" class="action-2" onclick="ActionResult('LowerCase')">
+                LowerCase
+            </button>
+            <button type="button" class="action-3" onclick="ActionResult('CharCount')">
+                CharCount
+            </button>
+            <button type="button" class="action-4" onclick="ActionResult('WordCount')">
+                WordCount
+            </button>
+        </div>
+
+        <script>
+            function ActionResult(action) {
+                const inputText = document.getElementById("input-text")
+                const resultText = document.getElementById("resultText")
+
+                if (action == 'UPPERCASE') {
+                    resultText.innerText = inputText.value.toUpperCase();
+                }
+                else if (action == 'LowerCase') {
+                    resultText.innerText = inputText.value.toLowerCase();
+                }
+                else if (action == 'CharCount') {
+                    resultText.innerText = (`The Character Count of text is: ${inputText.value.length}`);
+                }
+                else {
+                    resultText.innerText = (`The Word Count of text is: ${inputText.value.split(" ").length}`);
+
+                }
+            }
+
+        </script>
